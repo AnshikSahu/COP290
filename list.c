@@ -18,6 +18,9 @@ int is_empty(struct list* l);  // Check if list is empty or not
 #endif*/
 #include "list.h"
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 struct list* list_new() {
     struct list* l = malloc(sizeof(struct list));
     l->head = NULL;

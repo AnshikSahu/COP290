@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "list.h"
+#include "list.c"
 #include <stdlib.h>
 #include <string.h>
 
