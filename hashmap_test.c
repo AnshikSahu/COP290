@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include "hm.c"
-#include "list.h"
+#include "list.c"
 #include <stdlib.h>
 #include <string.h>
 #include "mythread.h"
