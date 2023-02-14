@@ -1,5 +1,6 @@
-#include "mythread.h"
 #include "list.h"
+#include "mythread.h"
+#include <stdlib.h>
 #define SZ 4096
 
 struct hashmap_element_s {
@@ -9,10 +10,10 @@ struct hashmap_element_s {
 
 struct hashmap_s {
   struct list* table[SZ];
-  struct lock* lk[SZ];
+  /*struct lock* lk[SZ];*/
 };
 
-
+unsigned long hash_key(const char* word);
 int hashmap_create(struct hashmap_s *const out_hashmap);   // Initialize a hashmap
 int hashmap_put(struct hashmap_s *const hashmap, const char* key, void* data);   // Set value of the key as data in hashmap. You can use any method to resolve conflicts. Also write your own hashing function
 void* hashmap_get(struct hashmap_s *const hashmap, const char* key);    // Fetch value of a key from hashmap
