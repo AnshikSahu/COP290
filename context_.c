@@ -5,7 +5,7 @@
 #define MEM 64000
 #include <stdio.h>
 #include <ucontext.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
 static ucontext_t ctx;
 
