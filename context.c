@@ -14,11 +14,10 @@ static void conjecture(int len, void* options, int sz, void fn(void*)){
     getcontext(&ctx);
     ctx.uc_stack.ss_sp = st1;
     ctx.uc_stack.ss_size = sizeof st1;
-    makecontext(&ctx,conjecture,0);
+    makecontext(&ctx,fn(options),0);
     // conjecture(int len, void* options+i, int sz, fn(void*)); 
         // break
-    }
-} // Create context and start traversal
+    } // Create context and start traversal
 
 void assert(bool b){
     if (b==false)
