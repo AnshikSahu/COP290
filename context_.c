@@ -9,20 +9,8 @@
 
 static ucontext_t ctx;
 
-static void conjecture(int len, void* options, int sz, void (*fn)(void*)) {
-    char* st1 = (char*)malloc(len * sz);
-    getcontext(&ctx);
-    ctx.uc_stack.ss_sp = st1;
-    ctx.uc_stack.ss_size = len * sz;
-    makecontext(&ctx, (void (*)(void))fn, 1, options);
-    setcontext(&ctx);
-}
-
-void assert(bool b) {
-    if (!b) {
-        free(ctx.uc_stack.ss_sp);
-        setcontext(&ctx);
-    }
+bool is_lt_40(int x) {
+    return x < 40;
 }
 
 bool is_prime(int x) {
@@ -34,8 +22,10 @@ bool is_prime(int x) {
     return true;
 }
 
-bool is_lt_40(int x) {
-    return x < 40;
+void assert(bool b) {
+    if (!b) {
+        setcontext(&ctx);
+    }
 }
 
 int nested(int i) {
@@ -48,6 +38,16 @@ void app(void* c) {
     assert(is_lt_40(*i));
     int x = nested(*i);
     printf("%d\n", x);
+}
+
+static void conjecture(int len, void* options, int sz, void (*fn)(void*)) {
+    char *st1[8192];
+    options=options-sz;
+    getcontext(&ctx);
+    ctx.uc_stack.ss_sp = st1;
+    ctx.uc_stack.ss_size = sizeof st1;
+    options=options+sz;
+    app(options);
 }
 
 int main(void) {
