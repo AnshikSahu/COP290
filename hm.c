@@ -31,7 +31,7 @@ unsigned long hash_key(const char* word){
   unsigned long val=0;
   int i;
   for(i=0;i<strlen(word);i++){
-    val=(val*31)%SZ+word[i];
+    val=(val*37)%SZ+word[i];
   }
   return val%SZ;
 }
