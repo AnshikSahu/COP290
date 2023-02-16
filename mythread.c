@@ -57,6 +57,8 @@ int lock_release(struct lock* lk);   // Release lock
 #include <unistd.h>
 #include <stdbool.h>
 
+#define STACK_SIZE 8192
+
 typedef struct Thread {
     ucontext_t context;
     void (*func)(void*);
