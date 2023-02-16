@@ -67,8 +67,29 @@ typedef struct Thread {
     struct Thread *next;
 } Thread;
 
-
+Thread *current_thread;
 void mythread_init(){
-	
+	current_thread = NULL;
+}
 
-    
+ucontext_t* mythread_create(void func(void*), void* arg){
+    Thread *thread = (Thread*)malloc(sizeof(Thread));
+    if (thread == NULL) {
+        return NULL;
+    }
+
+    thread->func = func;
+    thread->arg = arg;
+    thread->next = current_thread;
+
+    getcontext(&thread->context);
+    thread->context.uc_stack.ss_sp = malloc(STACK_SIZE);
+    thread->context.uc_stack.ss_size = STACK_SIZE;
+    thread->context.uc_link = &current_thread->context;
+    makecontext(&thread->context, (void (*)(void))thread->func,1, thread->arg);
+
+    current_thread = thread;
+
+    return (void*)thread;
+}   
+
