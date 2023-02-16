@@ -21,10 +21,6 @@ void lock_acquire(struct lock* lk);   // Set lock. Yield if lock is acquired by 
 int lock_release(struct lock* lk);   // Release lock
 
 #endif
-*/
-#include "mythread.h"
-#include "list.h"
-/*
 #ifndef THREAD_H
 #define THREAD_H
 
@@ -49,6 +45,7 @@ int lock_release(struct lock* lk);   // Release lock
 
 #endif
 */
+#include "mythread.h"
 #include "hm.c"
 #include "list.c"
 #include <stdio.h>
