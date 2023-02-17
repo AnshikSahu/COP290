@@ -17,11 +17,9 @@ int main(int argc, char** argv) {
     hashmap_create(&hashmap);
     printf("Testing threads!\n");
     mythread_init();
-    printf("HEre1");
     for(int i=1;i<argc;i++) {
         mythread_create(readFile, (void *) argv[i]);
     }
-    printf("HEre2");
     mythread_join();
     hashmap_iterator(&hashmap, printer);
     printf("Testing threads done!\n\n");
@@ -54,7 +52,6 @@ void readFile(void *args) {
     	// 5. Set new count of the word as x+1.
     	// 6. Release lock
 	    // 7. Repeat for all words in the file.
-        printf("Here3");
 		char *filename = (char*)args;
 	    FILE *fp = fopen(filename,"r");
 	    if(fp==NULL)
