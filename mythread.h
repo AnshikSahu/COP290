@@ -1,23 +1,51 @@
-#ifndef THREAD_H
-#define THREAD_H
+#include "hm.h"
+#define _XOPEN_SOURCE 600
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ucontext.h>
+#include <signal.h>
+#include <unistd.h>
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<ucontext.h>
-#include<signal.h>
-#include<sys/time.h>
-#include<unistd.h>
+#define STACK_SIZE 8192
 
-void mythread_init();      // Initialize threads list
-ucontext_t* mythread_create(void func(void*), void* arg);  // Create a new thread
-void mythread_join();  // Waits for other thread to complete. It is used in case of dependent threads.
-void mythread_yield();  // Perform context switching here
+struct list *ThreadList;
+ucontext_t *main_context;
 
-struct lock {
-	ucontext_t* ctx;
-};
-struct lock* lock_new();   // return an initialized lock object
-void lock_acquire(struct lock* lk);   // Set lock. Yield if lock is acquired by some other thread.
-int lock_release(struct lock* lk);   // Release lock
+void mythread_init(){
+    ThreadList = list_new();
+    printf("Hello\n");
+    main_context = (ucontext_t*)malloc(8192);
+}
 
-#endif
+ucontext_t* mythread_create(void func(void*), void* arg){
+    ucontext_t *context= (ucontext_t*)malloc(sizeof(ucontext_t));
+    printf("Hello");
+    getcontext(context);
+    (*context).uc_stack.ss_sp = malloc(STACK_SIZE);
+    (*context).uc_stack.ss_size = STACK_SIZE;
+    (*context).uc_link = main_context;
+    printf("Hello");
+    makecontext(context, (void (*)(void))func,1,arg);
+    printf("Hello");
+    list_add(ThreadList,context);
+
+    return context;
+}
+
+void mythread_join(){
+    printf("Hello joining");
+    if(ThreadList->head == NULL){
+        printf("No threads to join");
+    }
+    else{
+        printf("Hello joining");
+    }
+    getcontext(main_context);
+    while (ThreadList->head != NULL) {
+        printf("Hello switching");
+        swapcontext(main_context, ThreadList->head->data);
+        list_rm(ThreadList,ThreadList->head);
+        }
+    }

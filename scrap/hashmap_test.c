@@ -1,8 +1,10 @@
 
 #include <stdio.h>
-#include "hm.h"
+#include "hm.c"
+#include "list.c"
 #include <stdlib.h>
 #include <string.h>
+#include "mythread.h"
 
 struct hashmap_s hashmap;
 
@@ -16,14 +18,14 @@ int main(int argc, char** argv) {
     hashmap_create(&hashmap);
     printf("Testing hashmap!\n");
     printf("Iterate empty hashmap!\n");
-   // hashmap_iterator(&hashmap, printer);
+    hashmap_iterator(&hashmap, printer);
     printf("Done iterate empty hashmap!\n");
 
     char* key1 = "hello\0";
     int* c1 = (int*) malloc(sizeof(int));
     *c1 = 23;
     hashmap_put(&hashmap, key1, c1);
-   // hashmap_iterator(&hashmap, printer);
+    hashmap_iterator(&hashmap, printer);
 
     char* key = "world\0";
     int* c = (int*) malloc(sizeof(int));
