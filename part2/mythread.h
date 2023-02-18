@@ -13,7 +13,6 @@ ucontext_t *main_context;
 
 void mythread_init(){
     ThreadList = list_new();
-    printf("Hello\n");
     main_context = (ucontext_t*)malloc(STACK_SIZE);
 }
 
