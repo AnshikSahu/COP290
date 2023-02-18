@@ -30,16 +30,8 @@ ucontext_t* mythread_create(void func(void*), void* arg){
 }
 
 void mythread_join(){
-    printf("Hello joining");
-    if(ThreadList->head == NULL){
-        printf("No threads to join");
-    }
-    else{
-        printf("Hello joining");
-    }
     getcontext(main_context);
     while (ThreadList->head != NULL) {
-        printf("Hello switching");
         swapcontext(main_context, ThreadList->head->data);
         list_rm(ThreadList,ThreadList->head);
         }
