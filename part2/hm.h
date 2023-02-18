@@ -82,7 +82,6 @@ int release_bucket(struct hashmap_s *const hashmap, const char* key);   // Relea
 
 int acquire_bucket(struct hashmap_s *const hashmap, const char* key){
   int index=hash_key(key);
-  printf("index %d\n",index);
   lock_acquire(hashmap->lk[index]);
   return 0;
 }
@@ -90,6 +89,5 @@ int acquire_bucket(struct hashmap_s *const hashmap, const char* key){
 int release_bucket(struct hashmap_s *const hashmap, const char* key){
   int index=hash_key(key);
   lock_release(hashmap->lk[index]);
-  printf("lock released");
   return 0;
 }
