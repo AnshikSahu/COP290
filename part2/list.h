@@ -47,3 +47,9 @@ void list_rm(struct list* l, struct listentry* e) {
         e->next->prev = e->prev;
     }
 }
+
+int is_enpty(struct list* l){
+	if(l->head==NULL){
+		return 1;}
+	return 0;
+}
