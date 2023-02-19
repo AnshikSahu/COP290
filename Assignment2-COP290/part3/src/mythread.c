@@ -1,9 +1,10 @@
-#include "mythread.h"
-#include "list.h"
+#define _XOPEN_SOURCE 600
+#include "../include/mythread.h"
+#include "../include/list.h"
 #include <pthread.h>
 #include <sched.h>
 
-struct ucontext_t main_ctx;
+// struct ucontext_t main_ctx;
 struct list *l;
 void mythread_init() {
 	l = list_new();

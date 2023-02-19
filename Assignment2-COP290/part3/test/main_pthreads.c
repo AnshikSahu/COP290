@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "hm.h"
-#include "list.h"
+#include "../include/hm.h"
+#include "../include/list.h"
 #include <stdlib.h>
 #include <string.h>
-#include "mythread.h"
+#include "../include/mythread.h"
 
 void readFile(void *);
 
@@ -11,7 +11,7 @@ struct hashmap_s hashmap;
 
 int printer(struct hashmap_element_s *const e) {
 	int* count = (int*) e->data;
-	printf("key %s, count %d\n", e->key, *count);
+	printf("key %s \n, count %d\n", e->key, *count);
 	return 0;
 }
 

@@ -1,4 +1,4 @@
-#include "mythread.h"
+#include "../include/mythread.h"
 
 #define STACK_SIZE 64000
 
