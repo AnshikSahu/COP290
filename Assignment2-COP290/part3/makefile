@@ -1,6 +1,9 @@
 list:
-	gcc -o obj/list_test test/list_test.c src/list.c
-	./obj/list_test  -I include/
+	arch -x86_64 gcc -o obj/list_test test/list_test.c src/list.c -I include/
+	./obj/list_test  
+hashmap:
+	arch -x86_64 gcc -o obj/hashmap_test test/hashmap_test.c src/list.c src/mythread.c src/hm.c  -I include/
+	./obj/hashmap_test
 doc:
 	doxygen Doxyfile
 clean:

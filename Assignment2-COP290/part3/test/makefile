@@ -1,2 +1,2 @@
 report:
-	pdflatex texample.tex
+	pdflatex report.tex
