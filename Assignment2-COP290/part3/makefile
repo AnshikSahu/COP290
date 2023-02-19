@@ -5,11 +5,6 @@ hashmap:
 	arch -x86_64 gcc -o obj/hashmap_test test/hashmap_test.c src/list.c src/mythread.c src/hm.c  -I include/
 	./obj/hashmap_test
 doc:
-	doxygen -g Doxyfile
-	INPUT= ./include/list.h
-	INPUT= ./include/mythread.h
-	INPUT= ./include/hm.h
-	INPUT= ./mainpage.md
 	doxygen Doxyfile
 clean:
 	rm -f obj/*
