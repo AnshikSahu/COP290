@@ -60,7 +60,7 @@ void readFile(void *args) {
 		return;
 	char ch;
 	int i=0;
-	char arr[25];
+	char arr[200];
 	int val =-1;
 	while((ch = fgetc(fp))!=EOF) {
 		if(ch!=' ' && ch!='\n' && ch!='\t' && ch!='\0') {
