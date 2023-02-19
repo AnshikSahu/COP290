@@ -1,2 +1,2 @@
 report:
-	pdflatex report.tex
+	pdflatex reportCOP290.tex
