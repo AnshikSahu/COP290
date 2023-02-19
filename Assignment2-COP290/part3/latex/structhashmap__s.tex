@@ -1,0 +1,30 @@
+\hypertarget{structhashmap__s}{}\doxysection{hashmap\+\_\+s Struct Reference}
+\label{structhashmap__s}\index{hashmap\_s@{hashmap\_s}}
+
+
+A structure representing a hash map.  
+
+
+
+
+{\ttfamily \#include $<$hm.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structhashmap__s_ae8dcc4747fc7199a44ca2174b7945ec0}\label{structhashmap__s_ae8dcc4747fc7199a44ca2174b7945ec0}} 
+struct \mbox{\hyperlink{structlist}{list}} $\ast$ {\bfseries table} \mbox{[}SZ\mbox{]}
+\begin{DoxyCompactList}\small\item\em An array of linked lists to store the elements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structhashmap__s_aaa05b55d24a5c7b80c681871a203fd9f}\label{structhashmap__s_aaa05b55d24a5c7b80c681871a203fd9f}} 
+struct \mbox{\hyperlink{structlock}{lock}} $\ast$ {\bfseries lk} \mbox{[}SZ\mbox{]}
+\begin{DoxyCompactList}\small\item\em An array of locks whose the ith index stores the state of lock i.\+e. if it is not locked or if it is, then which context has locked it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure representing a hash map. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{hm_8h}{hm.\+h}}\end{DoxyCompactItemize}

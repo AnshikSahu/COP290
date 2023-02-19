@@ -1,0 +1,36 @@
+\hypertarget{mythread_8h_source}{}\doxysection{mythread.\+h}
+\mbox{\hyperlink{mythread_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ THREAD\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ THREAD\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include<stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_XOPEN\_SOURCE\ 600}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include<stdlib.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include<ucontext.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include<signal.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include<sys/time.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include<unistd.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mythread_8h_a208f41a96703a668897f97f212bfaf52}{mythread\_init}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}{mythread\_create}}(\textcolor{keywordtype}{void}\ func(\textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{void}*\ arg);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}{mythread\_join}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}{mythread\_yield}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlock}{lock}}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}*\ c;}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlock}{lock}}*\ \mbox{\hyperlink{mythread_8h_a168a10005fede78825b8c0c925415add}{lock\_new}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}{lock\_acquire}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlock}{lock}}*\ lk);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mythread_8h_a86df4756182955a6ca389503c93d1822}{lock\_release}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlock}{lock}}*\ lk);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

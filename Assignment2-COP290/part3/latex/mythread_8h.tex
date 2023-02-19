@@ -1,0 +1,120 @@
+\hypertarget{mythread_8h}{}\doxysection{mythread.\+h File Reference}
+\label{mythread_8h}\index{mythread.h@{mythread.h}}
+
+
+A simple thread library using ucontext.\+h in C.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ucontext.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlock}{lock}}
+\begin{DoxyCompactList}\small\item\em Lock is a flag which checks if some word has been acquired by a context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mythread_8h_a78c99ffd76a7bb3c8c74db76207e9ab4}\label{mythread_8h_a78c99ffd76a7bb3c8c74db76207e9ab4}} 
+\#define {\bfseries \+\_\+\+XOPEN\+\_\+\+SOURCE}~600
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mythread_8h_a208f41a96703a668897f97f212bfaf52}\label{mythread_8h_a208f41a96703a668897f97f212bfaf52}} 
+void {\bfseries mythread\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the thread library. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}{mythread\+\_\+create}} (void func(void $\ast$), void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Creates a new thread. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}\label{mythread_8h_abf1d6455a1b78b1be5113e76ba8b02dc}} 
+void {\bfseries mythread\+\_\+join} ()
+\begin{DoxyCompactList}\small\item\em Waits for all threads to complete, and removes the context once it is complete. Used in case of dependent threads. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}\label{mythread_8h_a8c8049ca40472b6e4fedad5960d6b56d}} 
+void {\bfseries mythread\+\_\+yield} ()
+\begin{DoxyCompactList}\small\item\em If there are more than one contexts in the list then switch the context with its successive context. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlock}{lock}} $\ast$ \mbox{\hyperlink{mythread_8h_a168a10005fede78825b8c0c925415add}{lock\+\_\+new}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new lock. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}{lock\+\_\+acquire}} (struct \mbox{\hyperlink{structlock}{lock}} $\ast$lk)
+\begin{DoxyCompactList}\small\item\em Acquires a lock. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mythread_8h_a86df4756182955a6ca389503c93d1822}{lock\+\_\+release}} (struct \mbox{\hyperlink{structlock}{lock}} $\ast$lk)
+\begin{DoxyCompactList}\small\item\em Releases a context from a lock, if it has been acquired. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple thread library using ucontext.\+h in C. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}\label{mythread_8h_add38fde7157ac3938c4a60b64ed67e9f}} 
+\index{mythread.h@{mythread.h}!lock\_acquire@{lock\_acquire}}
+\index{lock\_acquire@{lock\_acquire}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_acquire()}{lock\_acquire()}}
+{\footnotesize\ttfamily void lock\+\_\+acquire (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlock}{lock}} $\ast$}]{lk }\end{DoxyParamCaption})}
+
+
+
+Acquires a lock. 
+
+If the lock is already owned by another thread, the current thread will be blocked until the lock is released by its owner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lk} & Pointer to the lock to acquire. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mythread_8h_a168a10005fede78825b8c0c925415add}\label{mythread_8h_a168a10005fede78825b8c0c925415add}} 
+\index{mythread.h@{mythread.h}!lock\_new@{lock\_new}}
+\index{lock\_new@{lock\_new}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_new()}{lock\_new()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlock}{lock}} $\ast$ lock\+\_\+new (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new lock. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the new lock. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mythread_8h_a86df4756182955a6ca389503c93d1822}\label{mythread_8h_a86df4756182955a6ca389503c93d1822}} 
+\index{mythread.h@{mythread.h}!lock\_release@{lock\_release}}
+\index{lock\_release@{lock\_release}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{lock\_release()}{lock\_release()}}
+{\footnotesize\ttfamily int lock\+\_\+release (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlock}{lock}} $\ast$}]{lk }\end{DoxyParamCaption})}
+
+
+
+Releases a context from a lock, if it has been acquired. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lk} & Pointer to the lock to release. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}\label{mythread_8h_a350c139a6ceb309a88f2258cbd03dfe5}} 
+\index{mythread.h@{mythread.h}!mythread\_create@{mythread\_create}}
+\index{mythread\_create@{mythread\_create}!mythread.h@{mythread.h}}
+\doxysubsubsection{\texorpdfstring{mythread\_create()}{mythread\_create()}}
+{\footnotesize\ttfamily void $\ast$ mythread\+\_\+create (\begin{DoxyParamCaption}\item[{void }]{funcvoid $\ast$,  }\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Creates a new thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & A pointer to the function to be executed in the new thread. \\
+\hline
+{\em arg} & A pointer to the argument to be passed to the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new thread\textquotesingle{}s context. 
+\end{DoxyReturn}
